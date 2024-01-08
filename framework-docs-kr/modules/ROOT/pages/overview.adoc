@@ -1,24 +1,19 @@
 [[overview]]
-= Spring Framework Overview
+= 스프링 프레임워크 개요
 :docinfo1:
 
-Spring makes it easy to create Java enterprise applications. It provides everything you
-need to embrace the Java language in an enterprise environment, with support for Groovy
-and Kotlin as alternative languages on the JVM, and with the flexibility to create many
-kinds of architectures depending on an application's needs. As of Spring Framework 6.0,
-Spring requires Java 17+.
+스프링은 Java 엔터프라이즈 애플리케이션을 쉽게 만들 수 있습니다. 이는 엔터프라이즈 환경에서 Java를 도입하기 위해
+필요한 모든 것을 제공하며, JVM 위에서 동작하는 또 다른 언어인 Kotlin과 Groovy도 지원합니다. 또한, 애플리케이션이
+필요로하는 많은 종류의 아키텍처들을 만들 수 있는 유연성을 가지고 있습니다. 스프링 프레임워크 6.0을 사용하기 위해서는
+Java 17+ 버전이 필요합니다.
 
-Spring supports a wide range of application scenarios. In a large enterprise, applications
-often exist for a long time and have to run on a JDK and application server whose upgrade
-cycle is beyond developer control. Others may run as a single jar with the server embedded,
-possibly in a cloud environment. Yet others may be standalone applications (such as batch
-or integration workloads) that do not need a server.
+스프링은 다양한 애플리케이션 시나리오를 지원합니다. 거대한 크기의 엔터프라이즈에서 애플리케이션은 종종 오랜기간동안
+존재하고 있고 개발자가 제어할 수 없는 업그레이드 주기를 갖는 JDK와 애플s리케이션 서버 위에서 동작해야합니다.
+다른 애플리케이션은 내장 서버가 있는 단일 JAR에서 동작하고, 이는 클라우드 환경에서 실행될 수 있습니다.
+심지어 서버가 필요없는 독립 실행형 어플리케이션(예를들어, 배치나 통합 워크로드)이 되어야 할 수도 있습니다.
 
-Spring is open source. It has a large and active community that provides continuous feedback
-based on a diverse range of real-world use cases. This has helped Spring to successfully
-evolve over a very long time.
-
-
+스프링은 오픈 소스이고, 크고 활성화된 커뮤니티를 갖고 있습니다. 여기서 실제로 사용된 다양한 케이스를 바탕으로 지속적인
+피드백을 제공하고 있습니다. 이 덕분에 스프링은 오랜 기간동안 성공적으로 발전하고 있습니다.
 
 
 [[overview-spring]]
