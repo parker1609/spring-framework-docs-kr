@@ -37,14 +37,12 @@ JDK 9에서 모듈을 사용하는 애플리케이션에서 Spring Framework 5 J
 
 
 [[overview-history]]
-== History of Spring and the Spring Framework
+== 스프링과 스프링 프레임워크 역사
 
-Spring came into being in 2003 as a response to the complexity of the early
-https://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition[J2EE] specifications.
-While some consider Java EE and its modern-day successor Jakarta EE to be in
-competition with Spring, they are in fact complementary. The Spring programming
-model does not embrace the Jakarta EE platform specification; rather, it integrates
-with carefully selected individual specifications from the traditional EE umbrella:
+스프링은 2003년, https://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition[J2EE] 명세의 복잡성에 대한 응답으로 탄생하였습니다.
+일부는 Java EE와 현대 이 후속인 Jakarta EE가 스프링과 경쟁을 하고 있다고 여기지만, 사실 이 둘은 서로 상호 보완적입니다.
+스프링 프로그래밍 모델은 Jakarta EE 플랫폼 명세를 도입하기보다는 
+오히려 전통적인 EE 범주에서 신중하게 선택된 각각의 명세를 통합하였습니다.
 
 * Servlet API ({JSR}340[JSR 340])
 * WebSocket API ({JSR}356[JSR 356])
@@ -55,18 +53,16 @@ with carefully selected individual specifications from the traditional EE umbrel
 * JMS ({JSR}914[JSR 914])
 * as well as JTA/JCA setups for transaction coordination, if necessary.
 
-The Spring Framework also supports the Dependency Injection
-({JSR}330[JSR 330]) and Common Annotations
-({JSR}250[JSR 250]) specifications, which application
-developers may choose to use instead of the Spring-specific mechanisms provided
-by the Spring Framework. Originally, those were based on common `javax` packages.
+또한, 스프링 프레임워크는 의존성 주입({JSR}330[JSR 330])과 공통 애노테이션({JSR}250[JSR 250]) 명세를 지원합니다.
+이는 애플리케이션 개발자가 스프링 프레임워크에서 제공된 스프링의 특정 기술 대신 사용할 수 있습니다.
+초기에는, 이러한 명세가 `javax` 라는 공통 자바 패키지에 있었습니다.
 
-As of Spring Framework 6.0, Spring has been upgraded to the Jakarta EE 9 level
-(e.g. Servlet 5.0+, JPA 3.0+), based on the `jakarta` namespace instead of the
-traditional `javax` packages. With EE 9 as the minimum and EE 10 supported already,
-Spring is prepared to provide out-of-the-box support for the further evolution of
-the Jakarta EE APIs. Spring Framework 6.0 is fully compatible with Tomcat 10.1,
-Jetty 11 and Undertow 2.3 as web servers, and also with Hibernate ORM 6.1.
+스프링 프레임워크 6.0에서는 Jakarta EE 9 수준(예: Servlet 5.0+, JPA 3.0+)으로 업그레이드 되었습니다.
+기존의 `javax` 패키지 대신 `jakarta` 라는 네임스페이스를 기반으로 합니다.
+최소한 EE 9이고 이미 EE 10 수준을 지원하는 스프링은 Jakarta EE API의 추가 발전에 대해서
+즉각적으로 지원할 수 있도록 준비하고 있습니다.
+스프링 프레임워크 6.0은 Tomcat 10.1, Jetty 11, Undertow 2.3과 같은 웹 서버와 Hibernate ORM 6.1과 완벽하게 호환됩니다.
+
 
 Over time, the role of Java/Jakarta EE in application development has evolved. In the
 early days of J2EE and Spring, applications were created to be deployed to an application
