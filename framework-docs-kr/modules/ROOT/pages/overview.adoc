@@ -63,33 +63,28 @@ JDK 9에서 모듈을 사용하는 애플리케이션에서 Spring Framework 5 J
 즉각적으로 지원할 수 있도록 준비하고 있습니다.
 스프링 프레임워크 6.0은 Tomcat 10.1, Jetty 11, Undertow 2.3과 같은 웹 서버와 Hibernate ORM 6.1과 완벽하게 호환됩니다.
 
+시간이 지나, 애플리케이션 개발에서 Java/Jakarta EE의 역할은 발전하였습니다.
+J2EE와 스프링 초기에는 애플리케이션이 애플리케이션 서버에 배포되도록 만들어졌습니다.
+현재는 스프링 부트의 도움으로 애플리케이션은 데브옵스와 클라우드 친화적인 방식으로 만들어지며,
+서블릿 컨테이너가 내장되어 있고 변경하기 쉽습니다.
+스프링 프레임워크 5부터는 WebFlux 애플리케이션은 더이상 서블릿 API를 직접 사용하지 않으며,
+서블릿 컨테이너가 아닌 서버(Netty와 같은)에서 실행될 수 있습니다.
 
-Over time, the role of Java/Jakarta EE in application development has evolved. In the
-early days of J2EE and Spring, applications were created to be deployed to an application
-server. Today, with the help of Spring Boot, applications are created in a devops- and
-cloud-friendly way, with the Servlet container embedded and trivial to change. As of
-Spring Framework 5, a WebFlux application does not even use the Servlet API directly
-and can run on servers (such as Netty) that are not Servlet containers.
-
-Spring continues to innovate and to evolve. Beyond the Spring Framework, there are other
-projects, such as Spring Boot, Spring Security, Spring Data, Spring Cloud, Spring Batch,
-among others. It’s important to remember that each project has its own source code repository,
-issue tracker, and release cadence. See {spring-site-projects}[spring.io/projects] for
-the complete list of Spring projects.
-
-
+스프링은 계속해서 혁신하고 발전하고 있습니다. 스프링 프레임워크 이상으로 여기에는 스프링 부트, 스프링 시큐리티,
+스프링 데이터, 스프링 클라우드, 스프링 배치 등의 다른 프로젝트가 있습니다.
+여기서 중요한 점은 각 프로젝트는 자체 소스 코드 저장소, 이슈 트래커, 그리고 릴리즈 주기를 갖고 있다는 것을 기억하는 것입니다.
+{spring-site-projects}[spring.io/projects]에서 전체 스프링 프로젝트를 확인할 수 있습니다.
 
 
 [[overview-philosophy]]
-== Design Philosophy
+== 디자인 철학
 
-When you learn about a framework, it’s important to know not only what it does but what
-principles it follows. Here are the guiding principles of the Spring Framework:
+프레임워크를 배울 때, 그것이 무엇을 하는지 뿐만 아니라 어떤 원칙을 따르는지 아는 것이 중요합니다.
+스프링 프레임워크가 따르는 원칙 가이드는 다음과 같습니다.
 
-* Provide choice at every level. Spring lets you defer design decisions as late as possible.
-For example, you can switch persistence providers through configuration without changing
-your code. The same is true for many other infrastructure concerns and integration with
-third-party APIs.
+* 모든 단계에서 선택을 제공합니다. 스프링은 가능한 한 늦게 디자인 결정을 미룰 수 있도록 합니다.
+예를 들어, 코드를 변경하지 않고 configuration을 통해 영속성 공급자를 변경할 수 있습니다.
+마찬가지로 다양한 인프라 관련 문제와 써드파티 API와의 통합에도 동일하게 적용됩니다.
 * Accommodate diverse perspectives. Spring embraces flexibility and is not opinionated
 about how things should be done. It supports a wide range of application needs with
 different perspectives.
