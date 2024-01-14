@@ -88,12 +88,18 @@ J2EE와 스프링 초기에는 애플리케이션이 애플리케이션 서버�
 * Accommodate diverse perspectives. Spring embraces flexibility and is not opinionated
 about how things should be done. It supports a wide range of application needs with
 different perspectives.
+* 다양한 관점을 수용합니다. 스프링은 유연하고 어떻게 해야 하는지에 대해 강력한 의견을 제시하지는 않습니다.
+이는 다양한 관점에서 애플리케이션의 많은 요구사항을 지원할 수 있습니다.
 * Maintain strong backward compatibility. Spring’s evolution has been carefully managed
 to force few breaking changes between versions. Spring supports a carefully chosen range
 of JDK versions and third-party libraries to facilitate maintenance of applications and
 libraries that depend on Spring.
+* 강력한 하위 호환성을 유지합니다. 스프링은 버전 간의 변경이 서로 충돌나지 않도록 조심스럽게 진화해왔습니다.
+스프링은 신중하게 선택된 범위의 JDK와 써드 파티 라이브러리 버전을 지원하여 스프링에 의존하는
+애플리케이션과 라이브러리의 유지보수를 쉽게 도와줍니다.
 * Care about API design. The Spring team puts a lot of thought and time into making APIs
 that are intuitive and that hold up across many versions and many years.
+* API 디자인을 도와줍니다. 
 * Set high standards for code quality. The Spring Framework puts a strong emphasis on
 meaningful, current, and accurate javadoc. It is one of very few projects that can claim
 clean code structure with  no circular dependencies between packages.
