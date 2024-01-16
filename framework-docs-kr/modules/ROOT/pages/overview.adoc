@@ -100,37 +100,27 @@ API를 만들기 위해 많은 고민을 하고 시간을 투자합니다.
 
 [[overview-feedback]]
 == Feedback and Contributions
+== 피드백과 기여
 
-For how-to questions or diagnosing or debugging issues, we suggest using Stack Overflow. Click
-{stackoverflow-spring-tag}+or+spring-mvc+or+spring-aop+or+spring-jdbc+or+spring-r2dbc+or+spring-transactions+or+spring-annotations+or+spring-jms+or+spring-el+or+spring-test+or+spring+or+spring-orm+or+spring-jmx+or+spring-cache+or+spring-webflux+or+spring-rsocket?tab=Newest[here]
-for a list of the suggested tags to use on Stack Overflow. If you're fairly certain that
-there is a problem in the Spring Framework or would like to suggest a feature, please use
-the {spring-framework-issues}[GitHub Issues].
+질문, 진단 또는 디버깅 이슈에 대해서는 Stack Overflow를 사용하는 것을 권장합니다.
+Stack Overflow에서 사용할 태그 목록을 보려면 여기를 클릭하세요. Click {stackoverflow-spring-tag}+or+spring-mvc+or+spring-aop+or+spring-jdbc+or+spring-r2dbc+or+spring-transactions+or+spring-annotations+or+spring-jms+or+spring-el+or+spring-test+or+spring+or+spring-orm+or+spring-jmx+or+spring-cache+or+spring-webflux+or+spring-rsocket?tab=Newest[here]
+스프링 프레임워크에 꽤 확실한 문제가 있거나, 기능을 제안하고 싶다면 {spring-framework-issues}[GitHub Issues]를 사용하세요.
 
-If you have a solution in mind or a suggested fix, you can submit a pull request on
-{spring-framework-github}[Github]. However, please keep in mind
-that, for all but the most trivial issues, we expect a ticket to be filed in the issue
-tracker, where discussions take place and leave a record for future reference.
+만약 해결책이나 제안할 수정 사항이 있다면, {spring-framework-github}[Github] 여기서 Pull Request를 보낼 수 있습니다.
+매우 사소한 문제를 제외하고는, 이슈 트래커에 등록 후, 토론을 진행하고 나중에 참고할 수 있도록 기록을 남겨두고 있다는 것을 기억하세요.
 
-For more details see the guidelines at the {spring-framework-code}/CONTRIBUTING.md[CONTRIBUTING],
-top-level project page.
-
-
+좀 더 자세한 가이드라인은 {spring-framework-code}/CONTRIBUTING.md[CONTRIBUTING] 여기 있는 최상위 프로젝트 페이지를 참고하세요.
 
 
 [[overview-getting-started]]
-== Getting Started
+== 시작하기
 
-If you are just getting started with Spring, you may want to begin using the Spring
-Framework by creating a {spring-site-projects}/spring-boot/[Spring Boot]-based
-application. Spring Boot provides a quick (and opinionated) way to create a
-production-ready Spring-based application. It is based on the Spring Framework, favors
-convention over configuration, and is designed to get you up and running as quickly
-as possible.
+스프링을 처음 시작하는 경우, 스프링 부트 기반 애플리케이션을 생성하여 스프링 프레임워크를 사용하기 시작하는 것이 좋습니다.
+스프링 부트는 프로덕션에 적합한 스프링 기반 애플리케이션을 빠르게(그리고 스프링 부트가 추천한 방식으로) 만드는 방법을 제공합니다.
+이는 스프링 프레임워크를 기반으로 하며, 설정보다는 컨벤션을 선호하고, 가능한 빠르게 시작할 수 있도록 설계되었습니다.
 
-You can use https://start.spring.io/[start.spring.io] to generate a basic project or follow
-one of the {spring-site-guides}["Getting Started" guides], such as
-{spring-site-guides}/gs/rest-service/[Getting Started Building a RESTful Web Service].
-As well as being easier to digest, these guides are very task focused, and most of them
-are based on Spring Boot. They also cover other projects from the Spring portfolio that
-you might want to consider when solving a particular problem.
+기본 프로젝트를 만들기 위해서는 https://start.spring.io/[start.spring.io]를 사용하거나
+{spring-site-guides}/gs/rest-service/[Getting Started Building a RESTful Web Service]와 같은
+{spring-site-guides}["Getting Started" guides]를 따라할 수 있습니다.
+이 가이드는 이해하기 쉽고, 개발 작업에 매우 집중하기 좋습니다. 또한, 대부분 스프링 부트를 기반으로 하고 있습니다.
+이 가이드는 스프링 포트폴리오의 다른 프로젝트들도 다루고 있으므로, 특정 문제를 해결할 때 이를 사용할 수 있습니다.
