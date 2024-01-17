@@ -7,3 +7,4 @@
 
 # 번역 히스토리
 1. modules/ROOT/pages/overview.adoc
+2. modules/ROOT/pages/core.adoc
