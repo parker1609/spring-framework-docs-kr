@@ -9,3 +9,4 @@
 1. modules/ROOT/pages/overview.adoc
 2. modules/ROOT/pages/core.adoc
 3. modules/ROOT/pages/beans/introduction.adoc
+4. modules/ROOT/pages/beans/basics.adoc (Spring Framework / Core Technologies / The IoC Container / Container Overview)
