@@ -7,7 +7,7 @@
 이 설정 메타데이터는 XML, 자바 애노테이션 또는 자바 코드로 구현할 수 있습니다.
 이를 통해 애플리케이션을 구성하고 있는 객체와 그 객체 사이의 다양한 상호 의존성을 표현할 수 있습니다.
 
-`ApplicationContext`의 몇몇 구현체들은 스프링에서 제공됩니다. 독립 수행 애플리케이션에서는
+`ApplicationContext` 의 몇몇 구현체들은 스프링에서 제공됩니다. 독립 수행 애플리케이션에서는
 {spring-framework-api}/context/support/ClassPathXmlApplicationContext.html[`ClassPathXmlApplicationContext`]
 또는 {spring-framework-api}/context/support/FileSystemXmlApplicationContext.html[`FileSystemXmlApplicationContext`]
 구현체를 공통으로 생성합니다.
@@ -15,20 +15,16 @@ XML은 설정 메타데이터를 구성하기 위해 전통적인 형식의 빈�
 XML은 설정 메타데이터를 구성하기 위한 전통적인 방식이었지만, 현재는 자바 애노테이션이나 코드로도 가능합니다.
 이러한 추가적인 메타데이터 형식을 명시적으로 사용하기 위해서는 적은 양이지만 XML 설정이 필요합니다.
 
+대부분 애플리케이션 시나리오에서는 스프링 IoC 컨테이너의 인스턴스 하나 이상을 인스턴스화하는데 있어 명시적인 코드가 필요하지는 않습니다.
+예를 들어, 웹 애플리케이션 시나리오에서는 일반적으로 애플리케이션의 `web.xml` 파일에서 웹을 설명하는 XML 보일러플레이트 코드로
+간단히 8줄 정도면 충분합니다.
+(살펴보기 xref:core/beans/context-introduction.adoc#context-create[Convenient ApplicationContext Instantiation for Web Applications])
+만약 {spring-site-tools}[Spring Tools for Eclipse](이클립스에 특화된 개발 환경)을 사용한다면,
+몇 번의 마우스 클릭 또는 키보드를 치는 걸로 쉽게 이 보일러플레이트 설정을 만들 수 있습니다.
 
-In most application scenarios, explicit user code is not required to instantiate one or
-more instances of a Spring IoC container. For example, in a web application scenario, a
-simple eight (or so) lines of boilerplate web descriptor XML in the `web.xml` file
-of the application typically suffices (see
-xref:core/beans/context-introduction.adoc#context-create[Convenient ApplicationContext Instantiation for Web Applications]).
-If you use the {spring-site-tools}[Spring Tools for Eclipse] (an Eclipse-powered
-development environment), you can easily create this boilerplate configuration with a
-few mouse clicks or keystrokes.
-
-The following diagram shows a high-level view of how Spring works. Your application classes
-are combined with configuration metadata so that, after the `ApplicationContext` is
-created and initialized, you have a fully configured and executable system or
-application.
+아래 다이어그램 그림은 스프링이 어떻게 동작하는지 추상화된 모습입니다.
+애플리케이션 클래스들은 설정 메타데이터를 통해 구성되어 `ApplicationContext` 를 만들고 인스턴스화합니다.
+그 후, 완전히 설정되고 실행할 수 있는 시스템 또는 애플리케이션을 사용할 수 있습니다.
 
 .The Spring IoC container
 image::container-magic.png[]
