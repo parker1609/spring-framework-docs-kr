@@ -32,21 +32,18 @@ image::container-magic.png[]
 
 
 [[beans-factory-metadata]]
-== Configuration Metadata
+== 설정 메타데이터
 
-As the preceding diagram shows, the Spring IoC container consumes a form of
-configuration metadata. This configuration metadata represents how you, as an
-application developer, tell the Spring container to instantiate, configure, and assemble
-the objects in your application.
+앞서 다이어그램에서 보여주었듯이, 스프링 IoC 컨테이너는 설정 메타데이터의 한 형태를 사용합니다.
+이 설정 메타데이터는 애플리케이션 개발자로서 스프링 컨테이너에게 어떻게
+애플리케이션의 객체들을 인스턴스화하고, 설정하고, 조립하도록 지시해야하는지 알려줍니다.
 
-Configuration metadata is traditionally supplied in a simple and intuitive XML format,
-which is what most of this chapter uses to convey key concepts and features of the
-Spring IoC container.
+설정 메타데이터는 전통적으로 간단하고 직관적인 XML 형식을 제공됩니다.
+이 장에서는 주로 XML 형식을 사용하여 스프링 IoC 컨테이너의 핵심 개념과 기능을 전달할 것입니다.
 
-NOTE: XML-based metadata is not the only allowed form of configuration metadata.
-The Spring IoC container itself is totally decoupled from the format in which this
-configuration metadata is actually written. These days, many developers choose
-xref:core/beans/java.adoc[Java-based configuration] for their Spring applications.
+참고: 설정 메타데이터 형태로 XML 기반 메타데이터만이 사용되는 것은 아닙니다.
+스프링 IoC 컨테이너 자체는 설정 메타데이터가 실제로 어떤 형식으로 작성되었는지와는 완전히 분리되어 있습니다.
+현재 많은 개발자들은 스프링 애플리케이션에서 xref:core/beans/java.adoc[자바 기반 설정]을 선택하고 있습니다.
 
 For information about using other forms of metadata with the Spring container, see:
 
