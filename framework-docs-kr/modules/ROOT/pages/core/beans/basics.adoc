@@ -67,8 +67,14 @@ it is usually the responsibility of repositories and business logic to create an
 domain objects.
 
 이 빈 정의는 애플리케이션을 구성한 실제 객체와 일치합니다.
+일반적으로, 서비스 계층 객체, 리포지토리 또는 DAO(Data Access Object)와 같은 영속 계층 객체,
+웹 컨트롤러와 같은 표현 계층 객체 그리고 JPA `EntityManagerFactory`, JMS queues 와 같은
+인프라 계층 객체 등 4개의 계층에 대해 정의합니다.
+일반적으로, 컨테이너에서 세부적인 도메인 객체에 대해서는 설정하지는 않습니다.
+왜냐하면, 도메인 객체를 생성하고 저장하는 책임은 리포지토리와 비즈니스 로직이 담당하기 때문입니다.
 
 The following example shows the basic structure of XML-based configuration metadata:
+아래 예제는 XML 기반 설정 메타데이터의 기본 구조를 보여줍니다.
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -91,23 +97,26 @@ The following example shows the basic structure of XML-based configuration metad
 	</beans>
 ----
 
-<1> The `id` attribute is a string that identifies the individual bean definition.
-<2> The `class` attribute defines the type of the bean and uses the fully qualified
-class name.
+<1> `id` 애트리부트는 문자열이고, 각각의 빈 정의를 구분하는 값으로 사용됩니다.
+<2> `class` 애트리부트는 빈의 타입을 정의하고 완전한 클래스 이름으로 사용됩니다.
 
 The value of the `id` attribute can be used to refer to collaborating objects. The XML
 for referring to collaborating objects is not shown in this example. See
 xref:core/beans/dependencies.adoc[Dependencies] for more information.
 
-
+`id` 애트리부트는 서로 협력하고 있는 여러 객체들을 참조하는데 사용할 수도 있습니다.
+XML에서 이러한 객체들을 참조하는 방법은 위 XML 예제에서 보여주고 있지는 않습니다.
+좀 더 자세한 내용은 xref:core/beans/dependencies.adoc[Dependencies] 여기를 살펴보세요.
 
 [[beans-factory-instantiation]]
-== Instantiating a Container
+== 컨테이너 인스턴스화
 
 The location path or paths
 supplied to an `ApplicationContext` constructor are resource strings that let
 the container load configuration metadata from a variety of external resources, such
 as the local file system, the Java `CLASSPATH`, and so on.
+
+
 
 [tabs]
 ======
