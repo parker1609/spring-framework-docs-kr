@@ -228,27 +228,24 @@ import하고 있는 파일 아래의 `resources` 위치 안에 있어야 합니�
 그러나 이러한 경로는 상대적이므로, '/'는 사용하지 않는 것이 더 좋습니다.
 최상위 `<beans/>` 앨리먼트 내의 import된 파일의 내용은 스프링 스키마를 따른 유효한 XML 빈 정의여야 합니다.
 
-[NOTE]
+[참고]
 ====
-It is possible, but not recommended, to reference files in parent directories using a
-relative "../" path. Doing so creates a dependency on a file that is outside the current
-application. In particular, this reference is not recommended for `classpath:` URLs (for
-example, `classpath:../services.xml`), where the runtime resolution process chooses the
-"`nearest`" classpath root and then looks into its parent directory. Classpath
-configuration changes may lead to the choice of a different, incorrect directory.
+상대 경로 "../"를 사용하여 상위 디렉토리에 파일을 참조하는 것은 가능하지만 추천하지는 않습니다.
+만약 이를 사용하게되면 현재 애플리케이션 외부의 파일에 대한 의존성이 생깁니다.
+특히, 이러한 참조는 `classpath:` URL에서는 추천하지 않습니다. (예를 들어, `classpath:../services.xml`)
+`classpath:`는 런타임 해석 과정에서 "`nearest`" 즉, 가장 가까운 클래스패쓰 루트를 선택하고 그 상위 디렉토리를 찾습니다.
+클래스패쓰 설정을 변경하게 되면 전혀 다른 잘못된 디렉토리를 선택하게 할 수도 있습니다.
 
-You can always use fully qualified resource locations instead of relative paths: for
-example, `file:C:/config/services.xml` or `classpath:/config/services.xml`. However, be
-aware that you are coupling your application's configuration to specific absolute
-locations. It is generally preferable to keep an indirection for such absolute
-locations -- for example, through "${...}" placeholders that are resolved against JVM
-system properties at runtime.
+상대적인 경로 대신에 항상 완전히 충족된 리소스 위치를 사용할 수도 있습니다:
+예를 들어, `file:C:/config/services.xml` 또는 `classpath:/config/services.xml`
+그러나, 이를 사용하게 되면 애플리케이션의 설정과 특정한 절대 경로 위치가 서로 종속된다는 것을 명심해야 합니다.
+그러므로 절대 경로 위치에 대한 간접 참조를 유지하는 것이 일반적으로 바람직합니다.
+예를 들어, 런타임에 JVM 시스템 속성을 해석하는 "${...}" 플레이스홀더와 같은 것이 있습니다.
 ====
 
-The namespace itself provides the import directive feature. Further
-configuration features beyond plain bean definitions are available in a selection
-of XML namespaces provided by Spring -- for example, the `context` and `util` namespaces.
-
+네임스페이스는 그 자체로 import를 지정하는 기능을 제공합니다.
+일반 빈 정의뿐 아니라, 스프링이 제공하는 여러 XML 네임스페이스 선택지에서 추가적인 설정 기능들이 사용 가능합니다.
+예를 들어, `context`와 `util` 네임스페이스가 있습니다.
 
 [[groovy-bean-definition-dsl]]
 === The Groovy Bean Definition DSL
