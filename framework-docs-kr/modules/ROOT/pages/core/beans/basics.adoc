@@ -3,16 +3,16 @@
 
 `org.springframework.context.ApplicationContext` 인터페이스는 스프링 IoC 컨테이너를 나타내고,
 이는 빈을 인스턴스화하고, 구성하고, 조합하는 역할을 합니다.
-컨테이너는 설정 메타데이터(configuration metadata)를 읽어 어떤 객체를 인스턴스화하고, 구성하고, 조합해야하는지에 대해서 알아냅니다.
-이 설정 메타데이터는 XML, 자바 애노테이션 또는 자바 코드로 구현할 수 있습니다.
+컨테이너는 구성 메타데이터(configuration metadata)를 읽어 어떤 객체를 인스턴스화하고, 구성하고, 조합해야하는지에 대해서 알아냅니다.
+이 구성 메타데이터는 XML, 자바 애노테이션 또는 자바 코드로 구현할 수 있습니다.
 이를 통해 애플리케이션을 구성하고 있는 객체와 그 객체 사이의 다양한 상호 의존성을 표현할 수 있습니다.
 
 `ApplicationContext` 의 몇몇 구현체들은 스프링에서 제공됩니다. 독립 수행 애플리케이션에서는
 {spring-framework-api}/context/support/ClassPathXmlApplicationContext.html[`ClassPathXmlApplicationContext`]
 또는 {spring-framework-api}/context/support/FileSystemXmlApplicationContext.html[`FileSystemXmlApplicationContext`]
 구현체를 공통으로 생성합니다.
-XML은 설정 메타데이터를 구성하기 위해 전통적인 형식의 빈을 가지고 있는 반면에,
-XML은 설정 메타데이터를 구성하기 위한 전통적인 방식이었지만, 현재는 자바 애노테이션이나 코드로도 가능합니다.
+XML은 구성 메타데이터를 구성하기 위해 전통적인 형식의 빈을 가지고 있는 반면에,
+XML은 구성 메타데이터를 구성하기 위한 전통적인 방식이었지만, 현재는 자바 애노테이션이나 코드로도 가능합니다.
 이러한 추가적인 메타데이터 형식을 명시적으로 사용하기 위해서는 적은 양이지만 XML 설정이 필요합니다.
 
 대부분 애플리케이션 시나리오에서는 스프링 IoC 컨테이너의 인스턴스 하나 이상을 인스턴스화하는데 있어 명시적인 코드가 필요하지는 않습니다.
@@ -23,7 +23,7 @@ XML은 설정 메타데이터를 구성하기 위한 전통적인 방식이었�
 몇 번의 마우스 클릭 또는 키보드를 치는 걸로 쉽게 이 보일러플레이트 설정을 만들 수 있습니다.
 
 아래 다이어그램 그림은 스프링이 어떻게 동작하는지 추상화된 모습입니다.
-애플리케이션 클래스들은 설정 메타데이터를 통해 구성되어 `ApplicationContext` 를 만들고 인스턴스화합니다.
+애플리케이션 클래스들은 구성 메타데이터를 통해 구성되어 `ApplicationContext` 를 만들고 인스턴스화합니다.
 그 후, 완전히 설정되고 실행할 수 있는 시스템 또는 애플리케이션을 사용할 수 있습니다.
 
 .The Spring IoC container
@@ -32,31 +32,31 @@ image::container-magic.png[]
 
 
 [[beans-factory-metadata]]
-== 설정 메타데이터
+== 구성 메타데이터
 
-앞서 다이어그램에서 보여주었듯이, 스프링 IoC 컨테이너는 설정 메타데이터의 한 형태를 사용합니다.
-이 설정 메타데이터는 애플리케이션 개발자로서 스프링 컨테이너에게 어떻게
-애플리케이션의 객체들을 인스턴스화하고, 설정하고, 조립하도록 지시해야하는지 알려줍니다.
+앞서 다이어그램에서 보여주었듯이, 스프링 IoC 컨테이너는 구성 메타데이터의 한 형태를 사용합니다.
+이 구성 메타데이터는 애플리케이션 개발자로서 스프링 컨테이너에게 어떻게
+애플리케이션의 객체들을 인스턴스화하고, 구성하고, 조립하도록 지시해야하는지 알려줍니다.
 
-설정 메타데이터는 전통적으로 간단하고 직관적인 XML 형식을 제공됩니다.
+구성 메타데이터는 전통적으로 간단하고 직관적인 XML 형식을 제공됩니다.
 이 장에서는 주로 XML 형식을 사용하여 스프링 IoC 컨테이너의 핵심 개념과 기능을 전달할 것입니다.
 
-참고: 설정 메타데이터 형태로 XML 기반 메타데이터만이 사용되는 것은 아닙니다.
-스프링 IoC 컨테이너 자체는 설정 메타데이터가 실제로 어떤 형식으로 작성되었는지와는 완전히 분리되어 있습니다.
-현재 많은 개발자들은 스프링 애플리케이션에서 xref:core/beans/java.adoc[자바 기반 설정]을 선택하고 있습니다.
+참고: 구성 메타데이터 형태로 XML 기반 메타데이터만이 사용되는 것은 아닙니다.
+스프링 IoC 컨테이너 자체는 구성 메타데이터가 실제로 어떤 형식으로 작성되었는지와는 완전히 분리되어 있습니다.
+현재 많은 개발자들은 스프링 애플리케이션에서 xref:core/beans/java.adoc[자바 기반 구성]을 선택하고 있습니다.
 
 스프링 컨테이너에서 다른 메타데이터 형식에 대한 정보는 아래를 참고하세요.
 
-* xref:core/beans/annotation-config.adoc[애노테이션 기반 설정]: 애노테이션 기반 설정 메타데이터로 빈을 정의합니다.
-* xref:core/beans/java.adoc[자바 기반 설정]: XML 파일 대신 자바를 사용하여 애플리케이션 외부에 빈을 정의합니다.
+* xref:core/beans/annotation-config.adoc[애노테이션 기반 구성]: 애노테이션 기반 구성 메타데이터로 빈을 정의합니다.
+* xref:core/beans/java.adoc[자바 기반 구성]: XML 파일 대신 자바를 사용하여 애플리케이션 외부에 빈을 정의합니다.
 이 기능을 사용하기 위해서는 {spring-framework-api}/context/annotation/Configuration.html[`@Configuration`],
 {spring-framework-api}/context/annotation/Bean.html[`@Bean`],
 {spring-framework-api}/context/annotation/Import.html[`@Import`],
 and {spring-framework-api}/context/annotation/DependsOn.html[`@DependsOn`] 애노테이션을 참고하세요.
 
-스프링 설정은 컨테이너가 관리하는 빈 정의를 적어도 하나 이상 포함하고 있습니다.
-XML 기반 설정 메타데이터는 파일 내에 최상위 `<beans/>` 요소 안에 `<bean/>` 요소로 이러한 빈들을 설정합니다.
-자바 설정은 일반적으로 `@Configuration` 클래스 내의 `@Bean` 애노테이션된 메소드를 사용합니다.
+스프링 구성은 컨테이너가 관리하는 빈 정의를 적어도 하나 이상 포함하고 있습니다.
+XML 기반 구성 메타데이터는 파일 내에 최상위 `<beans/>` 요소 안에 `<bean/>` 요소로 이러한 빈들을 구성합니다.
+자바 구성은 일반적으로 `@Configuration` 클래스 내의 `@Bean` 애노테이션된 메소드를 사용합니다.
 
 이 빈 정의는 애플리케이션을 구성한 실제 객체와 일치합니다.
 일반적으로, 서비스 계층 객체, 리포지토리 또는 DAO(Data Access Object)와 같은 영속 계층 객체,
@@ -65,7 +65,7 @@ XML 기반 설정 메타데이터는 파일 내에 최상위 `<beans/>` 요소 �
 일반적으로, 컨테이너에서 세부적인 도메인 객체에 대해서는 설정하지는 않습니다.
 왜냐하면, 도메인 객체를 생성하고 저장하는 책임은 리포지토리와 비즈니스 로직이 담당하기 때문입니다.
 
-아래 예제는 XML 기반 설정 메타데이터의 기본 구조를 보여줍니다.
+아래 예제는 XML 기반 구성 메타데이터의 기본 구조를 보여줍니다.
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -100,7 +100,7 @@ XML에서 이러한 객체들을 참조하는 방법은 위 XML 예제에서 보
 
 `ApplicationContext` 생성자에 제공된 위치 경로 또는 경로들은 리소스 문자열로,
 컨테이너가 로컬 파일 시스템, 자바의 `CLASSPATH` 등과 같은 다양한 외부 리소스에
-설정 메타데이터를 저장할 수 있도록 합니다.
+구성 메타데이터를 저장할 수 있도록 합니다.
 
 [tabs]
 ======
@@ -130,7 +130,7 @@ xref:core/resources.adoc#resources-app-ctx[Application Contexts and Resource Pat
 에서 설명되었듯이, 애플리케이션 컨텍스트를 생성하기 위해 주로 사용됩니다.
 ====
 
-다음 예제는 `(services.xml)` 설정 파일에 있는 서비스 계층의 객체들을 보여줍니다:
+다음 예제는 `(services.xml)` 구성 파일에 있는 서비스 계층의 객체들을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -195,10 +195,10 @@ xref:core/beans/dependencies.adoc[Dependencies].
 
 
 [[beans-factory-xml-import]]
-=== XML 기반 설정 메타데이터 구성하기
+=== XML 기반 구성 메타데이터 구성하기
 
 빈 정의는 여러 XML 파일에 나눠 정의하는 것이 유용할 수가 있습니다.
-각각의 XML 설정 파일은 보통 아키텍터의 논리적인 계층 또는 모듈을 표현할 수 있습니다.
+각각의 XML 구성 파일은 보통 아키텍터의 논리적인 계층 또는 모듈을 표현할 수 있습니다.
 
 나눠져있는 각각의 XML 부분에 정의되어 있는 빈 정의들을 모두 가져오기 위해서 애플리케이션 컨텍스트 생성자를 사용할 수 있습니다.
 이 생성자는 여러 개의 `Resource` 위치들을 가져오는데,
@@ -238,22 +238,21 @@ import하고 있는 파일 아래의 `resources` 위치 안에 있어야 합니�
 
 상대적인 경로 대신에 항상 완전히 충족된 리소스 위치를 사용할 수도 있습니다:
 예를 들어, `file:C:/config/services.xml` 또는 `classpath:/config/services.xml`
-그러나, 이를 사용하게 되면 애플리케이션의 설정과 특정한 절대 경로 위치가 서로 종속된다는 것을 명심해야 합니다.
+그러나, 이를 사용하게 되면 애플리케이션의 구성과 특정한 절대 경로 위치가 서로 종속된다는 것을 명심해야 합니다.
 그러므로 절대 경로 위치에 대한 간접 참조를 유지하는 것이 일반적으로 바람직합니다.
 예를 들어, 런타임에 JVM 시스템 속성을 해석하는 "${...}" 플레이스홀더와 같은 것이 있습니다.
 ====
 
 네임스페이스는 그 자체로 import를 지정하는 기능을 제공합니다.
-일반 빈 정의뿐 아니라, 스프링이 제공하는 여러 XML 네임스페이스 선택지에서 추가적인 설정 기능들이 사용 가능합니다.
+일반 빈 정의뿐 아니라, 스프링이 제공하는 여러 XML 네임스페이스 선택지에서 추가적인 구성 기능들이 사용 가능합니다.
 예를 들어, `context`와 `util` 네임스페이스가 있습니다.
 
 [[groovy-bean-definition-dsl]]
-=== The Groovy Bean Definition DSL
+=== Groovy 빈 정의 DSL
 
-As a further example for externalized configuration metadata, bean definitions can also
-be expressed in Spring's Groovy Bean Definition DSL, as known from the Grails framework.
-Typically, such configuration live in a ".groovy" file with the structure shown in the
-following example:
+외부화된 구성 메타데이터를 위한 또 다른 예로서, 빈 정의는 Grails 프레임워크에서 알려진 것처럼
+스프링의 Groovy 빈 정의 DSL 로도 표현이 가능합니다.
+일반적으로, 이러한 구성은 아래 예제에서 구조를 볼 수 있으며, ".groovy" 파일 내에 존재합니다.
 
 [source,groovy,indent=0,subs="verbatim,quotes"]
 ----
@@ -276,18 +275,14 @@ following example:
 	}
 ----
 
-This configuration style is largely equivalent to XML bean definitions and even
-supports Spring's XML configuration namespaces. It also allows for importing XML
-bean definition files through an `importBeans` directive.
-
-
+이 구성 스타일은 XML 빈 구성과 거의 동일하고 스프링의 XML 구성 네임스페이스와 같은 지원을 받습니다.
+또한, 직접 `importBeans`를 사용해서 XML 빈 정의 파일을 추가하는 것을 허용합니다.
 
 [[beans-factory-client]]
-== Using the Container
+== 컨테이너 사용
 
-The `ApplicationContext` is the interface for an advanced factory capable of maintaining
-a registry of different beans and their dependencies. By using the method
-`T getBean(String name, Class<T> requiredType)`, you can retrieve instances of your beans.
+`ApplicationContext`는 다양한 빈들과 그들의 의존성을 유지하는 레지스트리를 관리할 수 있는 고도화된 팩토리의 인터페이스입니다.
+`T getBean(String name, Class<T> requiredType)` 메서드를 사용하면, 정의한 빈의 인스턴스를 찾을 수 있다.
 
 The `ApplicationContext` lets you read bean definitions and access them, as the following
 example shows:
