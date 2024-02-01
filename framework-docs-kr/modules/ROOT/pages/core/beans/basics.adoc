@@ -284,8 +284,7 @@ import하고 있는 파일 아래의 `resources` 위치 안에 있어야 합니�
 `ApplicationContext`는 다양한 빈들과 그들의 의존성을 유지하는 레지스트리를 관리할 수 있는 고도화된 팩토리의 인터페이스입니다.
 `T getBean(String name, Class<T> requiredType)` 메서드를 사용하면, 정의한 빈의 인스턴스를 찾을 수 있다.
 
-The `ApplicationContext` lets you read bean definitions and access them, as the following
-example shows:
+`ApplicationContext`는 빈 정의를 읽고 접근할 수 있게 해줍니다. 다음 예제에서 이를 보여주고 있습니다.
 
 [tabs]
 ======
@@ -293,13 +292,13 @@ Java::
 +
 [source,java,indent=0,subs="verbatim,quotes",role="primary"]
 ----
-	// create and configure beans
+    // 빈을 생성하고 구성합니다.
 	ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");
 
-	// retrieve configured instance
+    // 구성된 인스턴스를 가져옵니다.
 	PetStoreService service = context.getBean("petStore", PetStoreService.class);
 
-	// use configured instance
+    // 구성된 인스턴스를 사용합니다.
 	List<String> userList = service.getUsernameList();
 ----
 
@@ -309,20 +308,20 @@ Kotlin::
 ----
     import org.springframework.beans.factory.getBean
 
-	// create and configure beans
+	// 빈을 생성하고 구성합니다.
     val context = ClassPathXmlApplicationContext("services.xml", "daos.xml")
 
-    // retrieve configured instance
+    // 구성된 인스턴스를 가져옵니다.
     val service = context.getBean<PetStoreService>("petStore")
 
-    // use configured instance
+    // 구성된 인스턴스를 사용합니다.
     var userList = service.getUsernameList()
 ----
 ======
 
-With Groovy configuration, bootstrapping looks very similar. It has a different context
-implementation class which is Groovy-aware (but also understands XML bean definitions).
-The following example shows Groovy configuration:
+Groovy 구성에서 부트스트랩은 매우 유사합니다.
+이는 Groovy를 인식하는(또한 XML 빈 정의도 이해하는) 다른 컨텍스트 구현 클래스를 가지고 있습니다.
+다음 예제에서 Groovy 구성을 보여줍니다:
 
 [tabs]
 ======
@@ -341,9 +340,8 @@ val context = GenericGroovyApplicationContext("services.groovy", "daos.groovy")
 ----
 ======
 
-The most flexible variant is `GenericApplicationContext` in combination with reader
-delegates -- for example, with `XmlBeanDefinitionReader` for XML files, as the following
-example shows:
+가장 유연한 변형은 여러 읽기 구현체과 결합된 `GenericApplicationContext`이다.
+예를 들어, XML 파일을 위한 `XmlBeanDefinitionReader`와 함께 사용하는 것을 보여주는 예제는 다음과 같습니다:
 
 [tabs]
 ======
@@ -366,8 +364,8 @@ Kotlin::
 ----
 ======
 
-You can also use the `GroovyBeanDefinitionReader` for Groovy files, as the following
-example shows:
+Groovy 파일을 위한 `GroovyBeanDefinitionReader`를 할 수도 있습니다.
+다음 예제는 이를 보여주고 있습니다:
 
 [tabs]
 ======
@@ -390,17 +388,13 @@ Kotlin::
 ----
 ======
 
-You can mix and match such reader delegates on the same `ApplicationContext`,
-reading bean definitions from diverse configuration sources.
+같은 `ApplicationContext`에서 다양한 구성 소스로부터 빈 정의를 읽을 수 있도록
+이러한 읽기 구현체들을 섞고 매칭할 수 있습니다.
 
-You can then use `getBean` to retrieve instances of your beans. The `ApplicationContext`
-interface has a few other methods for retrieving beans, but, ideally, your application
-code should never use them. Indeed, your application code should have no calls to the
-`getBean()` method at all and thus have no dependency on Spring APIs at all. For example,
-Spring's integration with web frameworks provides dependency injection for various web
-framework components such as controllers and JSF-managed beans, letting you declare
-a dependency on a specific bean through metadata (such as an autowiring annotation).
-
-
-
-
+`getBean` 메서드를 사용하여 빈의 인스턴스를 가져올 수 있습니다.
+`ApplicationContext` 인터페이스는 빈을 가져오기 위한 몇 가지 다른 메서드를 가지고 있습니다.
+하지만 이상적으로는 애플리케이션 코드에서 이를 사용하지 않는 것이 좋습니다.
+실제로, 애플리케이션 코드에서 `getBean()` 메서드를 호출하는 곳이 없어야 하고
+어떠한 스프링 API에도 의존하지 않아야 합니다.
+예를 들어, 스프링의 웹 프레임워크와의 통합은 컨트롤러와 JSF 관리 빈과 같은 다양한 웹 프레임워크 컴포넌트를 위한 의존성 주입을 제공합니다.
+이는 메타데이터(autowiring 애노테이션과 같은)를 통해 특정 빈에 대한 의존성을 선언할 수 있게 해줍니다.
