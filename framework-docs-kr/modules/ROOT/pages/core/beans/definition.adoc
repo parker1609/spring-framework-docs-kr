@@ -2,24 +2,26 @@
 = 빈(Bean) 개요
 
 스프링 IoC 컨테이너는 하나 이상의 빈을 관리합니다.
-이러한 빈들은 컨테이너에 설정한 구성 정보에 의해 만들어집니다.
+이러한 빈들은 컨테이너에서 설정한 구성 정보에 의해 만들어집니다.
 (예를 들어, XML 형식에서 `<bean/>`로 정의된 것들입니다.)
 
 컨테이너 내부에서 이러한 빈들은 `BeanDefinition` 객체로 표현됩니다.
 그리고 이 객체는 (다른 정보들 중에서도) 다음의 메타정보를 포함하고 있습니다.
 
-* 패키지로 정의된 클래스 이름: 일반적으로, 정의되고 있는 빈의 실제 구현 클래스를 의미합니다.
+* 패키지로 정의된 클래스 이름: 일반적으로 정의된 빈의 실제 구현 클래스를 의미합니다.
 * 빈의 행동 구성 요소는 컨테이너 내에서 빈이 어떻게 동작해야하는지를 말합니다. (범위, 생명주기 콜백 등)
 * 빈이 작업을 수행하기 위해 필요로 하는 다른 빈들에 대한 참조가 있습니다. 이러한 참조는 '협력자' 또는 '의존성'이라고도 불립니다.
 * 새로 생성된 객체에 설정할 기타 구성 설정입니다. 예를 들어, 커넥션 풀을 관리하는 빈에서 풀의 크기 제한이나 사용하는 연결 개수와 같은 것들이 있습니다.
 
 This metadata translates to a set of properties that make up each bean definition.
 The following table describes these properties:
+이 메타정보는 각 빈 정의를 구성하는 일련의 속성들로 변환됩니다.
+다음 표는 이 속성에 대한 설명입니다.
 
 [[beans-factory-bean-definition-tbl]]
 .The bean definition
 |===
-| Property| Explained in...
+| 속성| 설명
 
 | Class
 | xref:core/beans/definition.adoc#beans-factory-class[Instantiating Beans]
@@ -49,23 +51,21 @@ The following table describes these properties:
 | xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-disposablebean[Destruction Callbacks]
 |===
 
-In addition to bean definitions that contain information on how to create a specific
-bean, the `ApplicationContext` implementations also permit the registration of existing
-objects that are created outside the container (by users). This is done by accessing the
-ApplicationContext's `BeanFactory` through the `getBeanFactory()` method, which returns
-the `DefaultListableBeanFactory` implementation. `DefaultListableBeanFactory` supports
-this registration through the `registerSingleton(..)` and `registerBeanDefinition(..)`
-methods. However, typical applications work solely with beans defined through regular
-bean definition metadata.
+특정 빈을 어떻게 생성할 지에 대한 정보를 포함하고 있는 빈 정의 외에도,
+`ApplicationContext` 구현체는 (사용자가 만든) 컨테이너 외부에서 만들어진 기존 객체 등록도 허용합니다.
+이는 `getBeanFactory()` 메서드를 통해 ApplicationContext의 `BeanFactory`에 접근하여 수행할 수 있습니다.
+그리고 이 메서드는 `DefaultListableBeanFactory` 구현체를 반환합니다.
+`DefaultListableBeanFactory`는 `registerSingleton(..)` 와 `registerBeanDefinition(..)`
+메서드를 통해 이러한 등록을 지원합니다.
+그러나, 일반적인 애플리케이션은 대부분 평범한 빈 정의 메타데이터를 통해 정의된 빈들만 가지고 동작합니다.
 
 [NOTE]
 ====
-Bean metadata and manually supplied singleton instances need to be registered as early
-as possible, in order for the container to properly reason about them during autowiring
-and other introspection steps. While overriding existing metadata and existing
-singleton instances is supported to some degree, the registration of new beans at
-runtime (concurrently with live access to the factory) is not officially supported and may
-lead to concurrent access exceptions, inconsistent state in the bean container, or both.
+빈 메타데이터와 수동으로 제공된 싱글톤 인스턴스는, 컨테이너가 자동 주입 및 기타 내부 조사 단계에서
+이들에 대해 적절하게 추론할 수 있도록 가능한 한 빨리 등록되어야 합니다.
+기존 메타데이터와 기존 싱글톤 인스턴스를 일정 정도 덮어쓰는 것은 지원되지만,
+런타임에 (팩토리에 실시간으로 접근하는 동안에) 새로운 빈을 등록하는 것은 공식적으로 지원되지 않으며,
+동시 접근 예외, 빈 컨테이너의 일관성 없는 상태 또는 둘 다를 초래할 수 있습니다.
 ====
 
 
