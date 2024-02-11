@@ -71,20 +71,19 @@ The following table describes these properties:
 
 
 [[beans-beanname]]
-== Naming Beans
+== 빈 이름 짓기
 
-Every bean has one or more identifiers. These identifiers must be unique within the
-container that hosts the bean. A bean usually has only one identifier. However, if it
-requires more than one, the extra ones can be considered aliases.
+모든 빈은 하나 이상의 식별자를 가지고 있습니다.
+이 식별자는 빈을 호스팅하고 있는 컨테이너 내에서 반드시 유일해야 합니다.
+하나의 빈은 보통 하나의 식별자를 갖습니다.
+그러나, 만약 하나보다 많은 식별자를 가져야한다면, 그 나머지는 별칭(alias)으로 선언할 수 있습니다.
 
-In XML-based configuration metadata, you use the `id` attribute, the `name` attribute, or
-both to specify bean identifiers. The `id` attribute lets you specify exactly one `id`.
-Conventionally, these names are alphanumeric ('myBean', 'someService', etc.), but they
-can contain special characters as well. If you want to introduce other aliases for the
-bean, you can also specify them in the `name` attribute, separated by a comma (`,`),
-semicolon (`;`), or white space. Although the `id` attribute is defined as an
-`xsd:string` type, bean `id` uniqueness is enforced by the container, though not by XML
-parsers.
+XML 기반의 구성 메타데이터에서는 `id` 애트리부트, `name` 애트리부트 또는 둘 다 사용하여 빈의 식별자를 지정할 수 있습니다.
+`id` 애트리부트는 정확히 하나의 `id`를 지정할 수 있습니다.
+전통적으로, 이 이름은 영숫자입니다. ('myBean', 'someService', 등)
+하지만, 특수한 기호 또한 포함될 수 있습니다.
+빈에게 또 다른 별칭을 부여하고 싶다면, `name` 애트리부트에서 콤파(`,`), 세미콜론(`;`) 또는 공백으로 구분하여 지정할 수 있습니다.
+`id` 애트리부트는 `xsd:string` 타입으로 정의되어 있지만, 빈 `id` 유일성은 XML 파서가 아닌 컨테이너에 의해서 강제됩니다.
 
 You are not required to supply a `name` or an `id` for a bean. If you do not supply a
 `name` or `id` explicitly, the container generates a unique name for that bean. However,
