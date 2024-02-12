@@ -85,31 +85,29 @@ XML 기반의 구성 메타데이터에서는 `id` 애트리부트, `name` 애�
 빈에게 또 다른 별칭을 부여하고 싶다면, `name` 애트리부트에서 콤파(`,`), 세미콜론(`;`) 또는 공백으로 구분하여 지정할 수 있습니다.
 `id` 애트리부트는 `xsd:string` 타입으로 정의되어 있지만, 빈 `id` 유일성은 XML 파서가 아닌 컨테이너에 의해서 강제됩니다.
 
-You are not required to supply a `name` or an `id` for a bean. If you do not supply a
-`name` or `id` explicitly, the container generates a unique name for that bean. However,
-if you want to refer to that bean by name, through the use of the `ref` element or a
-Service Locator style lookup, you must provide a name.
-Motivations for not supplying a name are related to using xref:core/beans/dependencies/factory-properties-detailed.adoc#beans-inner-beans[inner beans]
- and xref:core/beans/dependencies/factory-autowire.adoc[autowiring collaborators].
+빈에 대한 `name` 또는 `id`를 제공할 필요는 없습니다.
+`name` 또는 `id`를 명시적으로 제공하지 않으면, 컨테이너가 빈에 대해 유일한 이름을 생성합니다.
+그러나, 만약 `ref` 엘리먼트 또는 서비스 로케이터 스타일 조회를 사용하여 이름으로 빈을 참조하기를 원한다면,
+반드시 이름을 제공해야합니다.
+이름을 제공하지 않는 이유는
+xref:core/beans/dependencies/factory-properties-detailed.adoc#beans-inner-beans[inner beans] 과
+xref:core/beans/dependencies/factory-autowire.adoc[autowiring collaborators] 를
+사용하는 것과 관련이 있습니다.
 
-.Bean Naming Conventions
+.빈 이름 컨밴션
 ****
-The convention is to use the standard Java convention for instance field names when
-naming beans. That is, bean names start with a lowercase letter and are camel-cased
-from there. Examples of such names include `accountManager`,
-`accountService`, `userDao`, `loginController`, and so forth.
+빈을 명명할 때 컨밴션은 인스턴스의 필드 이름에 대해 일반적인 자바 컨밴션을 따릅니다.
+즉, 빈 이름은 소문자로 시작하여 이후는 카멜 케이스입니다.
+예를들어, `accountManager`, `accountService`, `userDao`, `loginController` 등의 이름이 포함됩니다.
 
-Naming beans consistently makes your configuration easier to read and understand.
-Also, if you use Spring AOP, it helps a lot when applying advice to a set of beans
-related by name.
+빈을 일관되게 명명하는 것은 구성을 더 쉽게 읽고 이해할 수 있습니다.
+또한, Spring AOP를 사용한다면, 이름으로 빈 집합에 어드바이스를 적용할 때 더욱 큰 힘을 발휘합니다.
 ****
 
-NOTE: With component scanning in the classpath, Spring generates bean names for unnamed
-components, following the rules described earlier: essentially, taking the simple class name
-and turning its initial character to lower-case. However, in the (unusual) special
-case when there is more than one character and both the first and second characters
-are upper case, the original casing gets preserved. These are the same rules as
-defined by `java.beans.Introspector.decapitalize` (which Spring uses here).
+NOTE: 클래스패스에서 컴포넌트 스캐닝을 할 때, 이름이 지정되지 않은 컴포넌트에 대해 스프링은 앞서 설명된 규칙을 따라 빈 이름을 생성합니다:
+기본적으로 클래스 이름을 가져와서 첫 글자를 소문자로 변경합니다.
+하지만, (이례적인) 특별한 경우로 첫 번째와 두 번째 글자가 모두 대문자인 경우에는 원래의 대소문자가 유지됩니다.
+이 규칙은 `java.beans.Introspector.decapitalize` 에 의해 정의된 것과 동일한 규칙입니다(스프링이 여기서 사용하는 바입니다).
 
 
 [[beans-beanname-alias]]
