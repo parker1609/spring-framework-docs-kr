@@ -111,14 +111,12 @@ NOTE: 클래스패스에서 컴포넌트 스캐닝을 할 때, 이름이 지정�
 
 
 [[beans-beanname-alias]]
-=== Aliasing a Bean outside the Bean Definition
+=== 빈 정의 외부에서 빈에 별칭 지정하기
 
-In a bean definition itself, you can supply more than one name for the bean, by using a
-combination of up to one name specified by the `id` attribute and any number of other
-names in the `name` attribute. These names can be equivalent aliases to the same bean
-and are useful for some situations, such as letting each component in an application
-refer to a common dependency by using a bean name that is specific to that component
-itself.
+빈 정의 내에서 `id` 애트리부트에 의해 지정된 하나의 이름과 `name` 애트리부트에서 다른 여러 개의 이름의 조합을 사용하여
+빈에 대한 이름을 하나 이상 제공할 수 있습니다.
+이 이름들은 동일한 빈에 대한 동등한 별칭이 될 수 있으며, 애플리케이션의 각 컴포넌트가 그 컴포넌트 자체에
+특정한 빈 이름을 사용하여 공통 의존성을 참조할 수 있도록 하는 등 일부 상황에서 유용합니다.
 
 Specifying all aliases where the bean is actually defined is not always adequate,
 however. It is sometimes desirable to introduce an alias for a bean that is defined
@@ -126,6 +124,12 @@ elsewhere. This is commonly the case in large systems where configuration is spl
 amongst each subsystem, with each subsystem having its own set of object definitions.
 In XML-based configuration metadata, you can use the `<alias/>` element to accomplish
 this. The following example shows how to do so:
+그러나, 빈이 실제로 정의된 곳에서 모든 별칭을 지정하는 것만으로는 항상 충분하지 않습니다.
+때로는 다른 곳에서 정의된 빈에 대해 별칭을 도입하고 싶을 수 있습니다.
+이는 대규모 시스템에서 흔히 발생하는 경우로, 구성이 각 하위 시스템별로 분할되며,
+각 하위 시스템이 자신만의 객체 정의 세트를 가지고 있는 상황입니다.
+XML 기반 구성 메타데이터에서는 `<alias/>` 요소를 사용하여 이를 달성할 수 있습니다.
+다음 예제는 이를 수행하는 방법을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
