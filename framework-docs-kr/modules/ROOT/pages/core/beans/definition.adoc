@@ -187,23 +187,20 @@ new 연산자를 사용한 자바 코드와 어느 정도 동등하게, 생성�
 
 
 [[beans-factory-class-ctor]]
-=== Instantiation with a Constructor
+=== 생성자를 이용한 인스턴스화
 
-When you create a bean by the constructor approach, all normal classes are usable by and
-compatible with Spring. That is, the class being developed does not need to implement
-any specific interfaces or to be coded in a specific fashion. Simply specifying the bean
-class should suffice. However, depending on what type of IoC you use for that specific
-bean, you may need a default (empty) constructor.
+생성자에 접근하여 빈을 생성할 때, 모든 일반적인 클래스는 스프링에서 사용할 수 있으며 호환됩니다.
+즉, 개발 중인 클래스는 특정 인터페이스를 구현할 필요가 없으며 특정한 방식으로 코딩할 필요도 없습니다.
+단순히 빈 클래스를 지정하는 것만으로 충분합니다.
+하지만, 특정 빈에 사용하는 IoC의 유형에 따라 기본 생성자(빈 생성자)가 필요할 수 있습니다.
 
-The Spring IoC container can manage virtually any class you want it to manage. It is
-not limited to managing true JavaBeans. Most Spring users prefer actual JavaBeans with
-only a default (no-argument) constructor and appropriate setters and getters modeled
-after the properties in the container. You can also have more exotic non-bean-style
-classes in your container. If, for example, you need to use a legacy connection pool
-that absolutely does not adhere to the JavaBean specification, Spring can manage it as
-well.
+스프링 IoC 컨테이너는 관리하길 원하는 거의 모든 클래스를 관리할 수 있습니다.
+JavaBeans만 관리하는 것에 한정되지는 않습니다.
+대부분의 스프링 사용자는 컨테이너 내의 프로퍼티에 모델링된 적절한 세터와 게터를 가진 기본 생성자(인자 없는 생성자)만 있는 실제 JavaBeans를 선호합니다.
+컨테이너 내에 더 이국적으로 빈 스타일이 아닌 클래스도 가질 수 있습니다.
+예를 들어, JavaBean 사양을 전혀 따르지 않는 레거시 연결 풀을 사용해야 하는 경우, 스프링은 그것도 관리할 수 있습니다.
 
-With XML-based configuration metadata you can specify your bean class as follows:
+XML 기반 구성 메타데이터를 사용하여 빈 클래스를 다음과 같이 지정할 수 있습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -212,9 +209,8 @@ With XML-based configuration metadata you can specify your bean class as follows
 	<bean name="anotherExample" class="examples.ExampleBeanTwo"/>
 ----
 
-For details about the mechanism for supplying arguments to the constructor (if required)
-and setting object instance properties after the object is constructed, see
-xref:core/beans/dependencies/factory-collaborators.adoc[Injecting Dependencies].
+생성자에 인자를 제공하는 메커니즘(필요한 경우)과 객체가 구성된 후 객체 인스턴스 속성을 설정하는 방법에 대한 자세한 내용은
+xref:core/beans/dependencies/factory-collaborators.adoc[의존성 주입(Injecting Dependencies)]을 참조하십시오.
 
 
 [[beans-factory-class-static-factory-method]]
