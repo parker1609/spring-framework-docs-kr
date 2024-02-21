@@ -214,20 +214,18 @@ xref:core/beans/dependencies/factory-collaborators.adoc[의존성 주입(Injecti
 
 
 [[beans-factory-class-static-factory-method]]
-=== Instantiation with a Static Factory Method
+=== 정적 팩토리 메서드를 이용한 인스턴스화
 
-When defining a bean that you create with a static factory method, use the `class`
-attribute to specify the class that contains the `static` factory method and an attribute
-named `factory-method` to specify the name of the factory method itself. You should be
-able to call this method (with optional arguments, as described later) and return a live
-object, which subsequently is treated as if it had been created through a constructor.
-One use for such a bean definition is to call `static` factories in legacy code.
+정적 팩토리 메서드로 생성하는 빈을 정의할 때, `class` 애트리부트를 사용하여 `static` 팩토리 메서드를 포함하는 클래스를 지정하고,
+`factory-method` 애트리부트를 사용하여 팩토리 메서드 자체의 이름을 지정합니다.
+이 메서드를 호출하고(인자를 추가할 수도 있습니다. 이는 나중에 설명합니다) 실제 객체를 반환할 수 있어야 합니다.
+그리고 이후에는 이 객체가 생성자를 통해 생성된 것처럼 취급됩니다.
+이러한 빈 정의의 사용 사례 중 하나는 레거시 코드에서 `static` 팩토리를 호출하는 것입니다.
 
-The following bean definition specifies that the bean will be created by calling a
-factory method. The definition does not specify the type (class) of the returned object,
-but rather the class containing the factory method. In this example, the
-`createInstance()` method must be a `static` method. The following example shows how to
-specify a factory method:
+아래 예제의 빈 정의는 팩토리 메서드를 호출하여 생성될 빈을 지정합니다.
+이 정의는 반환된 객체의 타입(클래스)을 지정하지 않고, 대신 팩토리 메서드를 포함하는 클래스를 지정합니다.
+이 예제에서 `createInstance()` 메서드는 `static` 메서드여야 합니다.
+다음 예제는 팩토리 메서드를 지정하는 방법을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -236,7 +234,7 @@ specify a factory method:
 		factory-method="createInstance"/>
 ----
 
-The following example shows a class that would work with the preceding bean definition:
+아래 예제는 앞선 빈 정의가 적용될 클래스를 보여줍니다:
 
 [tabs]
 ======
@@ -268,9 +266,8 @@ Kotlin::
 ----
 ======
 
-For details about the mechanism for supplying (optional) arguments to the factory method
-and setting object instance properties after the object is returned from the factory,
-see xref:core/beans/dependencies/factory-properties-detailed.adoc[Dependencies and Configuration in Detail].
+(선택적인) 인자를 팩토리 메서드에 제공하고, 팩토리에서 반환된 객체에 대한 속성을 설정하는 메커니즘에 대한 자세한 내용은
+xref:core/beans/dependencies/factory-properties-detailed.adoc[의존성 주입(Injecting Dependencies)]을 참조하십시오.
 
 
 [[beans-factory-class-instance-factory-method]]
