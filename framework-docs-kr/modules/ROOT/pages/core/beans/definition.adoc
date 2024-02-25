@@ -271,16 +271,13 @@ xref:core/beans/dependencies/factory-properties-detailed.adoc[의존성 주입(I
 
 
 [[beans-factory-class-instance-factory-method]]
-=== Instantiation by Using an Instance Factory Method
+=== 인스턴스 팩토리 메서드를 이용한 인스턴스화
 
-Similar to instantiation through a xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[static factory method]
-, instantiation with an instance factory method invokes a non-static
-method of an existing bean from the container to create a new bean. To use this
-mechanism, leave the `class` attribute empty and, in the `factory-bean` attribute,
-specify the name of a bean in the current (or parent or ancestor) container that contains
-the instance method that is to be invoked to create the object. Set the name of the
-factory method itself with the `factory-method` attribute. The following example shows
-how to configure such a bean:
+xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[static factory method]를 통해
+인스턴스화하는 것과 유사하게, 인스턴스 팩토리 메서드로 인스턴스화하는 것은 컨테이너 내의 기존 빈의 비정적(non-static) 메서드를 호출하여 새로운 빈을 생성합니다.
+이 메커니즘을 사용하기 위해서는 `class` 애트리부트를 비워두고, `factory-bean` 애트리부트는
+객체를 생성하기 위해 호출될 인스턴스 메서드를 포함하는 현재(또는 부모나 조상) 컨테이너 내의 빈의 이름으로 지정합니다.
+아래의 예제는 이와 같은 빈을 어떻게 구성하는지 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -295,7 +292,7 @@ how to configure such a bean:
 		factory-method="createClientServiceInstance"/>
 ----
 
-The following example shows the corresponding class:
+아래 예제는 위 구성 예제에 대응하는 클래스를 보여줍니다:
 
 [tabs]
 ======
@@ -328,7 +325,7 @@ Kotlin::
 ----
 ======
 
-One factory class can also hold more than one factory method, as the following example shows:
+하나의 팩토리 클래스는 하나 이상의 팩토리 메서드를 가질 수 있습니다. 아래 예제에서 이를 보여주고 있습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -345,7 +342,7 @@ One factory class can also hold more than one factory method, as the following e
 		factory-method="createAccountServiceInstance"/>
 ----
 
-The following example shows the corresponding class:
+아래 예제는 위 구성 예제에 대응하는 클래스를 보여줍니다:
 
 [tabs]
 ======
@@ -390,33 +387,32 @@ Kotlin::
 ----
 ======
 
-This approach shows that the factory bean itself can be managed and configured through
-dependency injection (DI). See xref:core/beans/dependencies/factory-properties-detailed.adoc[Dependencies and Configuration in Detail]
-.
+이 접근은 팩토리 빈 자체가 의존성 주입(DI)을 통해 스스로 관리되고 구성될 수 있음을 보여줍니다.
+xref:core/beans/dependencies/factory-properties-detailed.adoc[Dependencies and Configuration in Detail]를 살펴보십시오.
 
-NOTE: In Spring documentation, "factory bean" refers to a bean that is configured in the
-Spring container and that creates objects through an
-xref:core/beans/definition.adoc#beans-factory-class-instance-factory-method[instance] or
-xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[static] factory method. By contrast,
-`FactoryBean` (notice the capitalization) refers to a Spring-specific
-xref:core/beans/factory-extension.adoc#beans-factory-extension-factorybean[`FactoryBean`] implementation class.
-
+NOTE: 스프링 문서에서 "factory bean"은 스프링 컨테이너에서 구성되고
+xref:core/beans/definition.adoc#beans-factory-class-instance-factory-method[instance] 또는
+xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[static] 팩토리 메서드를 통해
+객체를 생성하는 빈을 말합니다.
+반면, `FactoryBean` (대문자 사용에 주목)은 스프링 특화
+xref:core/beans/factory-extension.adoc#beans-factory-extension-factorybean[`FactoryBean`]
+구현 클래스를 의미합니다.
 
 [[beans-factory-type-determination]]
-=== Determining a Bean's Runtime Type
+=== 빈의 런타임 타입 지정하기
 
-The runtime type of a specific bean is non-trivial to determine. A specified class in
-the bean metadata definition is just an initial class reference, potentially combined
-with a declared factory method or being a `FactoryBean` class which may lead to a
-different runtime type of the bean, or not being set at all in case of an instance-level
-factory method (which is resolved via the specified `factory-bean` name instead).
-Additionally, AOP proxying may wrap a bean instance with an interface-based proxy with
-limited exposure of the target bean's actual type (just its implemented interfaces).
+특정 빈의 런타임 유형을 결정하는 것은 간단하지 않습니다.
+빈 메타데이터 정의에 명시된 클래스는 초기 클래스 참조일 뿐입니다.
+이 클래스는 선언된 팩토리 메서드를 결합하거나 `FactoryBean` 클래스일 수도 있기 때문에 빈의 런타임 타입이 달라질 수 있거나,
+인스턴스 수준 팩토리 메서드의 경우 전혀 설정되지 않을 수도 있습니다(대신 지정된 `factory-bean` 이름을 통해 해결됩니다).
+추가로, AOP 프록싱은 빈 인스턴스를 인터페이스 기반 프록시로 감싸 대상 빈의 실제 타입을 제한적으로만 노출할 수 있습니다(구현된 인터페이스만).
 
-The recommended way to find out about the actual runtime type of a particular bean is
-a `BeanFactory.getType` call for the specified bean name. This takes all of the above
-cases into account and returns the type of object that a `BeanFactory.getBean` call is
-going to return for the same bean name.
+특정 빈의 실제 런타임 타입을 알아내는 권장 방법은 지정된 빈 이름으로 `BeanFactory.getType`을 호출하는 것입니다.
+이는 위에서 언급한 모든 경우를 고려하며, 같은 빈 이름에 대해 `BeanFactory.getBean` 호출이 반환할 객체 타입을 반환합니다.
+
+
+
+
 
 
 
