@@ -8,5 +8,7 @@ present what the end-user sees as a coherent application. This next section expl
 you go from defining a number of bean definitions that stand alone to a fully realized
 application where objects collaborate to achieve a goal.
 
-
-
+일반적인 엔터프라이즈 애플리케이션은 단일 객체(스프링 용어로는 빈)로 구성되어 있지 않습니다.
+가장 간단한 애플리케이션조차도 몇 개의 객체가 함께 작동하여 최종 사용자가 일관된 애플리케이션으로 인식하도록 합니다.
+다음 섹션에서는 독립적으로 여러 빈을 정의하는 것부터 시작하여,
+객체들이 협력하여 목표를 달성하는 완전히 실현된 애플리케이션으로 나아가는 방법에 대해 설명합니다.
